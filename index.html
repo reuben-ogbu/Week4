@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week4</title>
+    <style>
+        body{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: rgb(212, 212, 198);
+            border-style:solid;
+            border-radius: 20px;
+        }
+        
+        h1{
+            text-align:center ;
+            font-style:italic;
+            color: rgb(30, 26, 32);
+            background-color: rgb(234, 220, 245);
+        }
+        h4{
+            font-style: oblique;
+            color: aquamarine;
+            background-color: rgb(118, 22, 207);
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS BOX MODEL:</h1>
+    <ol type="A">
+        <li>Discribe the components of the css box model</li>
+        <p>The CSS box model describes the design and layout of elements in HTML. It consists of the following components:</p>
+        <ol type="i">
+
+        <li>Content: The actual content, such as text, images, or other media, inside the box.</li>
+            
+        <li>Padding: The space between the content and the border. Padding helps to create space within the element.</li>
+            
+        <li>Border: The border of the box. It goes around the padding and content.</li>
+            
+        <li>Margin: The space outside the border. Margins are used to create space between elements.</li>
+        </ol>
+            
+        <p>When you set the width and height of an element, you're setting the size of the content area. The total size of an element is calculated as follows: </p>
+        <p>total width = width + padding-left + padding-right + border-left + border-right + margin-left + margin-right</p>
+        <p>total height = height + padding-top + padding-bottom + border-top + border-bottom + margin-top + margin-bottom</p>
+
+        <li>How does the box-sizing property affect the box model? Provide examples.</li>
+        <p>The box-sizing property in CSS affects how the width and height of an element are calculated, which in turn affects the overall size of the box model.</p> <h4>There are two possible values for the box-sizing property:</h4>
+        <ul>
+
+       <li> content-box (default): This is the default value. When box-sizing: content-box; is applied, the width and height properties are only applied to the content area of the element, excluding padding, border, and margin. This means that if you set a width of 200px to an element with 20px padding and 5px border, the total width of the element will be 200px (content) + 20px (padding-left) + 20px (padding-right) + 5px (border-left) + 5px (border-right) = 250px.</li>
+
+        <li>border-box: When box-sizing: border-box; is applied, the width and height properties include the padding and border of the element, but not the margin. This means that if you set a width of 200px to an element with 20px padding and 5px border, the total width of the element will be 200px (content) + 20px (padding-left) + 20px (padding-right) + 5px (border-left) + 5px (border-right) = 200px. The content area will shrink to accommodate the padding and border.</li>
+        </ul>
+        <p>Here are some examples to illustrate the difference;</p>
+       <p> /* Using box-sizing: content-box; */
+        .box1 {<br>
+        width: 200px;<br>
+        padding: 20px;<br>
+        border: 5px solid black;<br>
+        margin: 10px;<br>
+        box-sizing: content-box;<br>
+        }</p>
+
+        /* Using box-sizing: border-box; */
+        .box2 {<br>
+        width: 200px;<br>
+        padding: 20px;<br>
+        border: 5px solid black;<br>
+        margin: 10px;<br>
+        box-sizing: border-box;<br>
+        }
+        <p>In the example above, .box1 will have a total width of 250px (200px content + 20px padding-left + 20px padding-right + 5px border-left + 5px border-right), while .box2 will have a total width of 200px, including padding and border.</p>
+        <li>How can you set different border styles using CSS?</li>
+        <p>You can set different border styles using the border-style property in CSS. The border-style property accepts one or more values, separated by spaces, to define the style of each side of the border.<br> Here are some common border styles you can use:</p>
+        <ul>
+            <li>solid: A solid line border.</li>
+            <li>dotted: A dotted line border.</li>
+            <li>dashed: A dashed line border.</li>
+            <li>double: A double line border.</li>
+            <li>groove: A 3D grooved border. The effect depends on the border-color value.</li>
+            <li>ridge: A 3D ridged border. The effect depends on the border-color value.</li>
+            <li>inset: A 3D inset border. The effect depends on the border-color value.</li>
+            <li>outset: A 3D outset border. The effect depends on the border-color value.</li>
+            <li>none: No border.</li>
+            <li>hidden: Same as "none", but occupies space.</li>
+        </ul>
+        <li>Discuss the difference between margin: auto and text-align: center for centering elements horizontally.</li>
+        <p>margin: auto; and text-align: center; are two CSS techniques used for centering elements horizontally, but they work in different ways and are used in different contexts.</p>
+        <ol type="i">
+            <li>margin: auto;: This technique is used to center block-level elements horizontally within their containing parent element. When you set margin: auto; on a block-level element with a defined width, the browser will automatically calculate and distribute equal margins on the left and right sides of the element, effectively centering it horizontally within its containing parent. This technique is commonly used for centering elements like divs with fixed widths.</li>
+            <p>.centered {
+                width: 200px;
+                margin: auto;
+              }
+              </p>
+              <li>text-align: center;: This technique is used to center inline or inline-block elements and their content horizontally within their containing block. When you set text-align: center; on a parent element, it aligns the inline-level content (like text and inline-block elements) inside that parent element to the center. This technique is commonly used for centering text or inline elements like spans.</li>
+              <p>.centered {
+                text-align: center;
+              }<br>In summary, margin: auto; is used to center block-level elements, while text-align: center; is used to center inline or inline-block elements. It's important to use the appropriate technique based on the type of element you're trying to center.
+              </p>
+        </ol>
+        <li>What is the significance of the overflow property in CSS,Provide examples of how it can be used?</li>
+        <p>The overflow property in CSS is used to control what happens when content overflows the boundaries of its containing element. It specifies whether to clip the content, add scrollbars, or display the content when it overflows its container.</p>
+        <h4>The 'Overflow' properties can take the following values</h4>
+        <ul>
+            <li>visible (default): Content is not clipped, and it may render outside the box.</li>
+            <li>hidden:Content that overflows the box is clipped and not displayed.</li>
+            <li>scroll:Adds a scrollbar to the box, allowing the user to scroll to see the content that overflows.
+            <li>auto:Adds a scrollbar to the box only if the content overflows.</li>
+        </ul>
+            <h4>Here are examples of how the overflow property can be used:</h4>
+            
+        <ul style="list-style-type:square;">
+        <li>Clipping Content with overflow: hidden;</li>
+        <p>.box {
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+        }<br>In this example, any content that exceeds the dimensions of the .box element will be clipped and not displayed.</p>
+        <li>Adding Scrollbars with overflow: scroll;</li>
+        <p>.box {
+            width: 200px;
+            height: 100px;
+            overflow: scroll;
+        }<br>This will add scrollbars to the .box element, allowing the user to scroll to see the content that exceeds the dimensions of the box.</p>
+        <li>Adding Scrollbars Automatically with overflow: auto;</li>
+        <p>.box {
+            width: 200px;
+            height: 100px;
+            overflow: auto;
+        }<br> This will add scrollbars to the .box element only if the content exceeds the dimensions of the box. Otherwise, no scrollbars will be shown.</p>
+        <li>Preventing Text Wrapping with overflow: hidden;</li>
+        <p>.box {
+            width: 200px;
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden;
+        }<br>This example prevents text from wrapping inside the .box element and clips any text that exceeds the width of the box.</p>
+        </ul>
+        <li>How can you create rounded corners for elements using CSS</li>
+        <p>You can create rounded corners for elements using the border-radius property in CSS. This property allows you to specify the radius of the corners of an element, creating a rounded effect. You can specify a single value to create rounded corners with the same radius on all corners, or you can specify different values for each corner to create a custom rounded effect. Here's how you can use the border-radius property:</p>
+        <ol>
+            <li>Creating Rounded Corners with the Same Radius:</li>
+            <p>.box {
+                width: 200px;<br>
+                height: 200px;<br>
+                border-radius: 20px; /* 20px border radius for all corners */<br>
+                background-color: #f0f0f0;<br>
+              }
+              </p>
+              <li>Creating Rounded Corners with Different Radii:</li>
+              <p>.box {
+                width: 200px;<br>
+                height: 200px;<br>
+                border-top-left-radius: 50px; /* 50px radius for top-left corner */<br>
+                border-top-right-radius: 10px; /* 10px radius for top-right corner */<br>
+                border-bottom-left-radius: 25px; /* 25px radius for bottom-left corner */<br>
+                border-bottom-right-radius: 0; /* No radius for bottom-right corner */<br>
+                background-color: #f0f0f0;
+              }
+              </p>
+              <li>Creating a Circle:</li>
+              <p>.circle {
+                width: 100px;<br>
+                height: 100px;<br>
+                border-radius: 50%; /* 50% border radius creates a circle */<br>
+                background-color: #f0f0f0;<br>
+              }
+              </p>
+        </ol>
+              <p>The border-radius property can also accept four values to specify the radius for each corner individually, in the order top-left, top-right, bottom-right, bottom-left. For example:</p>
+              <p>.box {
+                width: 200px;<br>
+                height: 200px;<br>
+                border-radius: 20px 10px 30px 5px; /* Different radii for each corner */<br>
+                background-color: #f0f0f0;<br>
+              }<br>By using the border-radius property, you can add visual interest to your elements and create a variety of rounded corner effects
+              </p>
+        <li>Describe the purpose of the box-shadow property in CSS and provide examples of its usage</li>
+        <p>The box-shadow property in CSS is used to add shadow effects to elements. It allows you to create visually appealing effects, such as adding depth and dimension to elements, or highlighting them in a design. The box-shadow property takes multiple values to specify the shadow's offset, blur radius, spread radius, color, and whether the shadow should be inset or outset.<br>Here's the syntax for the box-shadow property:</p>
+              <p>box-shadow: h-offset v-offset blur spread color inset;
+                <ul>
+                    <li>h-offset: Specifies the horizontal offset of the shadow. A positive value moves the shadow to the right, and a negative value moves it to the left.</li>
+                    <li>v-offset: Specifies the vertical offset of the shadow. A positive value moves the shadow down, and a negative value moves it up.</li>
+                    <li>blur: Specifies the blur radius. The larger the value, the more blurred the shadow will be.</li>
+                    <li>spread: Specifies the spread radius. A positive value expands the shadow, and a negative value shrinks it.</li>
+                    <li>color: Specifies the color of the shadow.</li>
+                    <li>inset: Optional. If present, the shadow will be inset inside the element instead of outset.</li>    
+                </ul></p>
+                <p>Here are some examples of using the box-shadow property:</p>
+                <ol>
+                    <li>Basic shadow;</li>
+                    <p>.box {
+                        width: 200px;<br>
+                        height: 200px;<br>
+                        background-color: #f0f0f0;<br>
+                        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);<br>
+                    }<br>This creates a box with a shadow that has a horizontal offset of 5px, vertical offset of 5px, blur radius of 10px, and a color with 30% opacity.</p>
+                      <li>Inset shadow;</li>
+                      <p>.box {
+                        width: 200px;<br>
+                        height: 200px;<br>
+                        background-color: #f0f0f0;<br>
+                        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);<br>
+                      }<br>This creates an inset shadow inside the box with no offset, a blur radius of 10px, and a color with 30% opacity.</p>
+                      <li>Multiple Shadows:</li>
+                      <p>.box {
+                        width: 200px;<br>
+                        height: 200px;<br>
+                        background-color: #f0f0f0;<br>
+                        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),<br>
+                                    -5px -5px 10px rgba(255, 255, 255, 0.5) inset;<br>
+                      }<br>This creates two shadows: one outset shadow with a dark color and one inset shadow with a light color, giving a beveled effect to the box.</p>
+                      <p>The box-shadow property is a powerful tool for adding depth and visual interest to your designs.</p>
+                    </p>
+                </ol>
+                    <li>Explain the concept of collapsing margins in CSS and how it affects layout.</li>
+                    <p>Collapsing margins is a behavior in CSS where the margins of adjacent elements collapse, or combine, into a single margin. This can happen in several scenarios, including when two vertical margins touch each other, or when a parent element's margin collapses with its first or last child's margin.<br>Here's how collapsing margins work in different scenarios:</p>
+                    <ul>
+                        <li>Adjacent Vertical Margins:</li><p>two block-level elements are stacked vertically with no content or padding between them, the margins of the elements will collapse into a single margin. The resulting margin will be equal to the larger of the two margins, known as the margin collapsing through the parent.<br>
+                        (div style="margin-bottom: 20px;">Element 1</div)
+                            (div style="margin-top: 30px;">Element 2</div)<br>In this example, the margin between Element 1 and Element 2 will collapse to 30px, which is the larger of the two margins</p>
+                        <li>Parent and First/Last Child:</li> a parent element has a margin that collapses with the margin of its first or last child, the resulting margin will be the larger of the two margins.<br>
+                        <p>(div style="margin-bottom: 20px;")<br>
+                            (p style="margin-top: 30px;">Paragraph</p)<br>
+                          </div><br>In this example, the margin between the div and the p element will collapse to 30px, which is the margin of the p element.<br>Collapsing margins can affect layout by creating unexpected spacing between elements. It's important to be aware of how margins collapse and use CSS techniques to prevent or control collapsing margins when necessary. For example, you can use padding, borders, or setting overflow: auto; on a parent element to prevent margins from collapsing.</p>
+                    </ul>
+    <h1>Fonts</h1>
+
+          <li>How do you specify font families in CSS?</li>
+          <p>In CSS, you can specify font families using the font-family property. This property allows you to specify a prioritized list of font family names or generic font family keywords. The browser will use the first available font in the list.<br>Here's how you can specify font families in CSS:</p>
+          <ol type="i">
+            <li>Specific Font Family Names:</li>
+            <p>.element {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }<br>In this example, the browser will first attempt to use the "Helvetica Neue" font. If that is not available, it will try to use the "Helvetica" font, then "Arial", and finally a generic sans-serif font.
+              </p>
+            <li>Generic Font Family Keywords:</li>
+            <p>.element {
+                font-family: serif;
+            }<br>Generic font family keywords like serif, sans-serif, monospace, cursive, and fantasy can be used. These keywords are mapped to specific font families by the browser
+              </p>
+            <li>Fallback Fonts:</li>
+            <p>.element {
+                font-family: "Arial Black", Impact, sans-serif;
+            }<br>It's common to include a generic font family at the end of the list as a fallback, ensuring that if none of the specified fonts are available, the browser will use a generic font of the specified type.
+              </p>
+            <li>Using Google Fonts:</li>
+            <p>@import url('https://fonts.googleapis.com/css2?family=Roboto');
+
+                .element {
+                  font-family: 'Roboto', sans-serif;
+                }<br>You can also use external font sources like Google Fonts. After importing the font, you can use it in your CSS just like any other font family.</p>
+
+                <p>It's important to provide a list of fallback fonts to ensure that your text remains readable even if the desired font is not available on the user's system.
+                </p>
+            </ol>
+            <li>What is the difference between serif and sans-serif fonts? Provide examples</li>
+            <p>Serif and sans-serif are two main categories of fonts, each with distinct characteristics:</p>
+            <table width="50%" border="1" bordercolor="blue" cellspacing="1" cellpadding="1">
+                <tr>
+                    <td>Serif Fonts</td>
+                    <td>Sans-serif Fonts:</td>
+                </tr>
+                <tr>
+                    <td>Serif fonts have small lines or strokes (serifs) at the ends of characters.</td>
+                    <td>Sans-serif fonts do not have serifs; they have clean, simple lines.</td>
+                </tr>
+                <tr>
+                    <td>These fonts are often considered more traditional, formal, and easier to read in printed Material</td>
+                    <td>These fonts are often considered more modern, informal, and better suited for digital displays.</td>
+                </tr>
+                <tr>
+                    <td>Examples of serif fonts include Times New Roman, Georgia, and Garamond.</td>
+                    <td>Examples of sans-serif fonts include Arial, Helvetica, and Verdana.</td>
+                </tr>
+                <tr>
+                    <td>.element {
+                        font-family: 'Times New Roman', Times, serif;
+                      }
+                      </td>
+                      <td>.element {
+                        font-family: Arial, Helvetica, sans-serif;
+                      }
+                      </td>
+                </tr>
+            </table>
+            <p>In web design, it's common to use sans-serif fonts for body text due to their readability on screens, especially at smaller sizes. Serif fonts are often used for headings or in contexts where a more traditional or elegant look is desired.</p>
+            <li>Describe the difference between font-size and font-weight properties in CSS?</li>
+        <p>The font-size and font-weight properties in CSS are used to control different aspects of the appearance of text</p>
+        <ol>
+            <li>font-size:</li>
+            <ul>
+                <li>The font-size property is used to specify the size of the text. It can be set to a variety of units, such as pixels (px), points (pt), ems (em), or percentages (%).</li>
+                <li>It determines the height of the text characters, affecting the overall size of the text.</li>
+                <li>Example:<br>.element {
+                    font-size: 16px;
+                  }
+                  </li>
+            </ul>
+            <li>font-weight:</li>
+            <ul>
+                <li>The font-weight property is used to specify the boldness of the text. It accepts values like normal, bold, bolder, lighter, or numeric values from 100 to 900</li>
+                <li>It controls the thickness of the text characters, making the text appear heavier or lighter.</li>
+                <li>Example:<br>.element {
+                    font-weight: bold;
+                  }
+                  </li>
+            </ul>
+        </ol>
+        <li>How can you include custom fonts in a web page using CSS? Explain the @font-face rule.</li>
+        <p>To include custom fonts in a web page using CSS, you can use the @font-face rule. This rule allows you to specify a font file and give it a name that can be used in your CSS styles.<br>Here's a basic example of how to include a custom font:</p>
+        <ol>
+            <li>Download the Font Files:</li>
+            <p>First, download the font files (usually in .woff or .woff2 format) for the custom font you want to use. Ensure that you have the legal rights to use the font on your website.</p>
+            <li>Upload Font Files to Your Server:</li>
+            <p>Upload the font files to a directory on your web server where they can be accessed by your web page.</p>
+            <li>Define the Font-Face Rule in Your CSS:</li>
+            <p>Use the @font-face rule to specify the font file's location and assign a name to the font. You can then use this name in your CSS styles.<br>@font-face {
+                font-family: 'CustomFont';<br>
+                src: url('path_to_font_file/fontfile.woff2') format('woff2'),<br>
+                     url('path_to_font_file/fontfile.woff') format('woff');<br>
+                /* Add more src lines if you have additional font file formats */<br>
+              }
+              </p>
+              <li>Use the Custom Font in Your CSS</li>
+              <p>Once you have defined the @font-face rule, you can use the font-family property to apply the custom font to your elements.<br>
+                body {
+                  font-family: 'CustomFont', sans-serif;
+                }</p>
+                <p>In this example, 'CustomFont' is the name you assigned to the font in the @font-face rule. If the custom font fails to load, the browser will fall back to using a generic sans-serif font.</p>
+                <li>Ensure Cross-Origin Resource Sharing (CORS) for Web Fonts:</li>
+                <p>If your font files are hosted on a different domain, you may need to configure your server to allow cross-origin access to the font files using CORS headers.</p>
+
+                <p>By following these steps, you can include custom fonts in your web page and apply them to your text using CSS.</p>
+        </ol>
+        <li>What is the purpose of the line-height property in CSS? How does it affect text layout</li>
+        <p>The line-height property in CSS is used to control the height of a line of text. It specifies the minimum height that each line of text should have, including the font size and any additional spacing such as leading. The line-height property can be set to a specific length, a percentage of the font size, or a unitless number.<br>Here's how the line-height property affects text layout:</p>
+        <ol>
+            <li>Single value</li>
+            <p> When you specify a single value for line-height, it applies to all lines of text within the element.<br>
+                p {
+                  line-height: 1.5; /* 1.5 times the font size */
+                }</p>
+            <li>Unitless Number</li>
+            <p> Using a unitless number, such as 1.5, sets the line height to a multiple of the font size.</p>
+            <li>Length or Percentage</li>
+            <p>You can also specify the line-height using a length (e.g., px, em) or a percentage. This sets an absolute line height for the text.<br>
+                p {
+                  line-height: 24px; /* Set line height to 24 pixels */
+                }</p>
+            <li>Inherit:</li>
+            <p>The line-height property can inherit the value from its parent element if not explicitly set.<br>
+
+                .parent {
+                  line-height: 1.5;
+                }
+                
+                .child {
+                  /* Inherits line height from parent */
+                }</p>
+            <p>The line-height property affects the vertical spacing between lines of text. A larger line-height value will result in more space between lines, while a smaller value will result in tighter spacing. The line-height property is useful for improving readability and aesthetics by adjusting the spacing between lines of text.
+                </p>
+        </ol>
+        <li>How do you style text using CSS to make it bold, italic, or underlined?</li>
+        <p>You can style text using CSS to make it bold, italic, or underlined using the following properties:</p>
+        <ul style="list-style-type: square;">
+            <li>Bold Text (font-weight):</li>
+            <p>Use the font-weight property to make text bold. You can use the bold keyword or numeric values (100 to 900).<br>
+                .bold-text {<br>
+                  font-weight: bold;
+                }</p>
+            <li>Italic Text (font-style):</li>
+            <p>Use the font-style property to make text italic. You can use the italic keyword.<br>
+                .italic-text {<br>
+                  font-style: italic;
+                }</p>
+            <li>Underlined Text (text-decoration):</li>
+            <p>Use the text-decoration property to underline text. You can use the underline keyword.<br>
+                .underlined-text {<br>
+                  text-decoration: underline;
+                }</p>
+            <li>Combining Styles:</li>
+            <p>You can combine these styles to apply multiple effects to text.<br>
+                .combined-text {<br>
+                  font-weight: bold;<br>
+                  font-style: italic;<br>
+                  text-decoration: underline;<br>
+                }</p>
+        </ul>
+        <li>Explain the difference between em, rem, px, and % units in CSS font size.</li>
+        <p>In CSS, em, rem, px, and % are units used to define font sizes. Each unit has its own characteristics and is used in different contexts.<br>Here's a brief explanation of each:</p>
+        <ol>
+            <li>em:</li>
+            <ul>
+                <li>The em unit is relative to the font size of the parent element.</li>
+                <li>For example, if the font size of the parent element is 16px, 1em is equal to 16px, 2em is equal to 32px, and so on.</li>
+                <li>This unit is useful for creating scalable designs where text size is relative to the surrounding text.</li>
+            </ul>
+            <li>rem:</li>
+            <ul>
+                <li>The rem unit is similar to em, but instead of being relative to the font size of the parent element, it is relative to the font size of the root element (html).</li>
+                <li>This makes rem a more predictable and easier-to-manage unit for setting font sizes, especially in complex layouts.</li>
+            </ul>
+            <li>px:</li>
+            <ul>
+                <li>The px unit is an absolute unit that specifies the font size in pixels.</li>
+                <li>Pixel values are fixed and do not change with the size of the parent element or the browser's default font size.</li>
+                <li>This unit is often used when you need precise control over the font size, but it can lead to less flexible and less accessible designs.</li>
+            </ul>
+            <li>%:</li>
+            <ul>
+                <li>The % unit is relative to the font size of the parent element.</li>
+                <li>However, unlike em, % is used to scale the font size by a percentage of the parent element's font size.</li>
+                <li>For example, if the parent element has a font size of 16px and you set the font size of a child element to 50%, the child element's font size will be 8px.</li>
+            </ul>   
+        </ol>
+        <p>In summary, em and rem are relative units that scale with the font size of the parent or root element, px is an absolute unit that specifies a fixed font size in pixels, and % is a relative unit that scales the font size by a percentage of the parent element's font size. Each unit has its own use case depending on the design requirements and scalability needs of the project.</p>
+        <li>Describe the font-style property in CSS and provide examples of its usage.</li>
+        <p>The font-style property in CSS is used to specify the style of the font. It can be used to make text italic or normal (non-italic). The font-style property accepts the following values:</p>
+        <ol>
+            <li>normal: The default value. Specifies a normal font style.</li>
+            <li>italic: Specifies an italic font style.</li>
+            <li>oblique: Specifies an oblique font style. This is similar to italic, but the text is typically slanted at a less pronounced angle.</li>
+            <p>Here's an example of how to use the font-style property:<br>p.normal {
+                font-style: normal;
+              }
+              
+              p.italic {
+                font-style: italic;
+              }
+              
+              p.oblique {
+                font-style: oblique;
+              }</p>
+             <p>In this example, paragraphs with the class normal will have a normal font style, paragraphs with the class italic will have an italic font style, and paragraphs with the class oblique will have an oblique font style.</p>
+
+            <p>It's important to note that the availability of italic and oblique styles depends on the font being used. Some fonts may not have an italic or oblique style, in which case the browser will simulate the style by artificially slanting the text.</p> 
+        </ol>
+        <li>Discuss the importance of fallback fonts and how you can implement them in CSS.</li>
+        <p>Fallback fonts are important for ensuring that text remains readable and accessible even if the desired font is not available on the user's device. They are used to specify alternative fonts that should be used if the primary font is not available. Fallback fonts should be similar in style and readability to the primary font to maintain a consistent look and feel across different devices.</p>
+        <p>Implementing fallback fonts in CSS is straightforward. You can specify a list of fonts using the font-family property, separating each font name with a comma. The browser will use the first font in the list that is available on the user's device. If none of the fonts are available, the browser will use its default font.</p>
+        <p>Here's an example of how to implement fallback fonts:</p>
+        body {
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;<br>
+        }
+        <p>In this example, the browser will attempt to use the "Segoe UI" font. If that font is not available, it will try to use the "Roboto" font, then "Arial", and finally a generic sans-serif font. This ensures that the text remains readable and maintains a consistent appearance across different devices.</p>
+    <li>How can you adjust the spacing between letters and words using CSS?</li>
+    <p>You can adjust the spacing between letters and words using CSS with the following properties:</p>
+    <ol>
+        
+            <li>Letter Spacing (letter-spacing):</li>
+            <ul style="list-style-type:circle ;">
+                <li>The letter-spacing property is used to adjust the spacing between characters in a text.</li>
+                <li>Positive values increase the space between characters, while negative values decrease it.</li>
+                <li>Example:</li>
+                    .letter-spacing {<br>
+                      letter-spacing: 2px; /* Increase letter spacing by 2 pixels */
+                    }
+            </ul>
+            <li>Word Spacing (word-spacing):</li>
+            <ul style="list-style-type: circle;">
+                <li>The word-spacing property is used to adjust the spacing between words in a text.</li>
+                <li>Positive values increase the space between words, while negative values decrease it.</li>
+                <li>Example:</li>
+                    .word-spacing {<br>
+                      word-spacing: 5px; /* Increase word spacing by 5 pixels */
+                    }
+            </ul>
+            <li>Adjusting Both Letter and Word Spacing:</li>
+            <ul style="list-style-type: circle;">
+                <li>You can use both letter-spacing and word-spacing together to adjust the spacing between both characters and words.</li>
+                <li>Example:</li>
+                    .spacing {<br>
+                      letter-spacing: 1px; /* Increase letter spacing by 1 pixel */
+                      word-spacing: 2px; /* Increase word spacing by 2 pixels */
+                    }
+            </ul>
+            <li>Using Negative Values</li>
+            <ul style="list-style-type: circle;">
+                <li>Negative values for letter-spacing or word-spacing can be used to decrease the spacing, bringing characters or words closer together.</li>
+                <li>Example:</li>
+                    .negative-spacing {<br>
+                      letter-spacing: -1px; /* Decrease letter spacing by 1 pixel */<br>
+                      word-spacing: -2px; /* Decrease word spacing by 2 pixels */
+                    }
+            </ul>
+    </ol>     
+        <p>Adjusting letter and word spacing can be useful for improving the readability and visual appeal of text in your web designs.</p>
+    </ol>
+        <footer>Thank You</footer>
+    
+</body>
+</html>
